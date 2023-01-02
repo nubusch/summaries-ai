@@ -1,16 +1,21 @@
-from docarray import DocumentArray
-from jina import Flow
-from decouple import config
 
-JINA_AUTH_TOKEN=config('jina_key')
+import cv2
+import pytesseract
+
+img = cv2.imread('page.jpg')
+
+h, w, c = img.shape
+boxes = pytesseract.image_to_data(img, pytesseract)
 
 
-docs = DocumentArray.from_files("test_pdf_ai.pdf", recursive=True)
 
-flow = (
-    Flow()
-    .add(uses="jinahub+sandbox://PDFSegmenter", install_requirements=True, name="segmenter")
-)
+boxes = pytesseract.image_to_boxes(img)
+for b in boxes.splitlines():
+    b = b.split(' ')
+    img = cv2.rectangle(img, (int(b[1]), h - int(b[2])), (int(b[3]), h - int(b[4])), (0, 255, 0), 2)
 
-with flow:
-  indexed_docs = flow.index(docs)
+cv2.imshow('img', img)
+cv2.waitKey(0)
+
+
+
