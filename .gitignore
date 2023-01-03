@@ -4,6 +4,7 @@
 envflow.yml
 executor_spacy.py
 executor_chunkmerg.py
+config.yml
 
 
 
