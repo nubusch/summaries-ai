@@ -2,8 +2,8 @@
 #script to keep out of git
 .env
 envflow.yml
-executor_spacy.py
-executor_chunkmerg.py
+executor/executor_spacy.py
+executor/executor_chunkmerg.py
 config.yml
 
 

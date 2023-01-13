@@ -6,7 +6,7 @@ from PyPDF2 import PdfReader
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 
-filename = 'SEBTheory.pdf'
+filename = 'rabbit.pdf'
 
 pdfobj = open(filename, 'rb')
 pdf = PyPDF2.PdfReader(pdfobj)
@@ -53,7 +53,7 @@ import textract
 from pandas.io import clipboard
 
 #read the content of pdf as text
-text = textract.process('SEBTheory.pdf')
+text = textract.process('rabbit.pdf')
 
 
 import oneai
